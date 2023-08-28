@@ -6,6 +6,7 @@ import {
   Param,
   Delete,
   Query,
+  ValidationPipe,
 } from '@nestjs/common';
 import { CarService } from './car.service';
 import { CreateCarDto } from './dto/create-car.dto';
@@ -21,7 +22,9 @@ export class CarController {
   }
 
   @Post()
-  async create(@Body() createCarDto: CreateCarDto): Promise<Car> {
+  async create(
+    @Body(new ValidationPipe()) createCarDto: CreateCarDto,
+  ): Promise<Car> {
     return this.carService.create(createCarDto);
   }
 

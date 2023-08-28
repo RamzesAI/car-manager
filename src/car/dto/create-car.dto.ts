@@ -5,7 +5,7 @@ export class CreateCarDto {
   brand: string;
 
   @IsString({ message: 'Model must be a string' })
-  name: string;
+  model: string;
 
   @IsInt({ message: 'Year must be a number' })
   year: number;
