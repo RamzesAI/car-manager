@@ -28,12 +28,12 @@ export class CarService {
   async delete(id: string): Promise<string> {
     const car = await this.carModel.findOne({ _id: id }).exec();
     if (!car) {
-      throw new NotFoundException(`Запись с id: ${id} не найдена`);
+      throw new NotFoundException(`Record with id: ${id} not found`);
     }
     const deleteResult = await this.carModel.deleteOne({ _id: id }).exec();
     if (!deleteResult.deletedCount) {
-      throw new BadRequestException(`Не удалось удалить запись с id: ${id}`);
+      throw new BadRequestException(`Failed to delete record with id: ${id}`);
     }
-    return `Запись с id: ${id} успешно удалена`;
+    return `Record with id: ${id} was successfully deleted`;
   }
 }
