@@ -21,7 +21,7 @@ export class CarService {
   }
 
   async create(createCarDto: CreateCarDto): Promise<Car> {
-    const car = await new this.carModel(createCarDto);
+    const car = new this.carModel(createCarDto);
     return car.save();
   }
 
