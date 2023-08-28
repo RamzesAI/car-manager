@@ -12,7 +12,9 @@ import { CarService } from './car.service';
 import { CreateCarDto } from './dto/create-car.dto';
 import { SortParams } from './types/sort-direction.type';
 import { Car } from './schemas/car.schema';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Cars')
 @Controller('car')
 export class CarController {
   constructor(private readonly carService: CarService) {}
