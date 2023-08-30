@@ -10,16 +10,18 @@ import {
 } from '@nestjs/common';
 import { CarService } from './car.service';
 import { CreateCarDto } from './dto/create-car.dto';
-import { SortParams } from './types/sort-direction.type';
 import { Car } from './schemas/car.schema';
 import { ApiTags } from '@nestjs/swagger';
+import { GetCarDto } from './dto/get-cars.dto';
 
 @ApiTags('Cars')
 @Controller('car')
 export class CarController {
   constructor(private readonly carService: CarService) {}
   @Get()
-  async getAllCarsWithSort(@Query() params: SortParams): Promise<Car[]> {
+  async getAllCarsWithSort(
+    @Query(new ValidationPipe()) params: GetCarDto,
+  ): Promise<Car[]> {
     return this.carService.getAllCarsWithSort(params);
   }
 

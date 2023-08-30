@@ -7,13 +7,13 @@ import { CreateCarDto } from './dto/create-car.dto';
 import { InjectModel } from '@nestjs/mongoose';
 import { Car } from './schemas/car.schema';
 import { Model } from 'mongoose';
-import { SortParams } from './types/sort-direction.type';
+import { GetCarDto } from './dto/get-cars.dto';
 
 @Injectable()
 export class CarService {
   constructor(@InjectModel(Car.name) private carModel: Model<Car>) {}
 
-  async getAllCarsWithSort(sortParams: SortParams): Promise<Car[]> {
+  async getAllCarsWithSort(sortParams: GetCarDto): Promise<Car[]> {
     const { direction, field } = sortParams;
     const sortObject = {};
     sortObject[field] = direction;

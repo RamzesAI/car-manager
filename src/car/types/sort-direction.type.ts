@@ -1,8 +1,3 @@
-export interface SortParams {
-  direction: SortDirection;
-  field: SortFields;
-}
-
 export enum SortDirection {
   asc = 'asc',
   desc = 'desc',
